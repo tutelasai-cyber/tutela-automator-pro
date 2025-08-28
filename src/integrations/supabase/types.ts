@@ -14,7 +14,119 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      tutela_attachments: {
+        Row: {
+          created_at: string
+          file_name: string
+          file_size: number | null
+          file_type: string
+          file_url: string
+          id: string
+          tutela_id: string
+        }
+        Insert: {
+          created_at?: string
+          file_name: string
+          file_size?: number | null
+          file_type: string
+          file_url: string
+          id?: string
+          tutela_id: string
+        }
+        Update: {
+          created_at?: string
+          file_name?: string
+          file_size?: number | null
+          file_type?: string
+          file_url?: string
+          id?: string
+          tutela_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tutela_attachments_tutela_id_fkey"
+            columns: ["tutela_id"]
+            isOneToOne: false
+            referencedRelation: "tutelas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tutelas: {
+        Row: {
+          accionados: string | null
+          accionantes: string | null
+          created_at: string
+          email_juzgado: string | null
+          id: string
+          informacion_estado: string | null
+          juzgado: string | null
+          numero_radicado: string | null
+          pdf_name: string | null
+          pdf_url: string | null
+          status: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          accionados?: string | null
+          accionantes?: string | null
+          created_at?: string
+          email_juzgado?: string | null
+          id?: string
+          informacion_estado?: string | null
+          juzgado?: string | null
+          numero_radicado?: string | null
+          pdf_name?: string | null
+          pdf_url?: string | null
+          status?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          accionados?: string | null
+          accionantes?: string | null
+          created_at?: string
+          email_juzgado?: string | null
+          id?: string
+          informacion_estado?: string | null
+          juzgado?: string | null
+          numero_radicado?: string | null
+          pdf_name?: string | null
+          pdf_url?: string | null
+          status?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
